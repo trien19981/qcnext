@@ -47,6 +47,18 @@ export const endpoints = {
       `/api/v1/chunks/${chunkId}/testcase-links/${testcaseId}`,
   },
 
+  /** S12 testcase list (qcbe document/S12_TC_LIST_DESIGN.md §3) */
+  projectTestcases: {
+    list: (projectId: string) => `/api/v1/projects/${projectId}/testcases`,
+    screens: (projectId: string) => `/api/v1/projects/${projectId}/testcases/screens`,
+    stats: (projectId: string) => `/api/v1/projects/${projectId}/testcases/stats`,
+    generate: (projectId: string) => `/api/v1/projects/${projectId}/testcases/generate`,
+    generateJobStatus: (projectId: string, jobId: string) =>
+      `/api/v1/projects/${projectId}/testcases/generate/${jobId}/status`,
+    bulk: (projectId: string) => `/api/v1/projects/${projectId}/testcases/bulk`,
+  },
+  testcaseDelete: (testcaseId: string) => `/api/v1/testcases/${testcaseId}`,
+
   chat: {
     listConversations: (projectId: string) => `/api/v1/projects/${projectId}/chat/conversations`,
     createConversation: (projectId: string) => `/api/v1/projects/${projectId}/chat/conversations`,

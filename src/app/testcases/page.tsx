@@ -12,11 +12,13 @@ export default async function TestcasesPage({
   const initialRole =
     rawRole === "admin"
       ? "admin"
-      : rawRole === "pm/ba" || rawRole === "pm"
-        ? "pm"
-        : rawRole === "qc/tester" || rawRole === "qc"
-          ? "qc"
-          : "dev";
+      : rawRole === "owner"
+        ? "owner"
+        : rawRole === "pm/ba" || rawRole === "pm"
+          ? "pm"
+          : rawRole === "qc/tester" || rawRole === "qc"
+            ? "qc"
+            : "dev";
 
   return <TestcasesClient projectId={projectId} initialRole={initialRole} />;
 }
