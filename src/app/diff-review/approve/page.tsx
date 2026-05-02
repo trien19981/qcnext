@@ -10,9 +10,10 @@ export default async function ApprovePanelPage({
     from?: string;
     to?: string;
     mode?: string;
+    diffReviewId?: string;
   }>;
 }) {
-  const { projectId, docId, from, to, mode } = (await searchParams) ?? {};
+  const { projectId, docId, from, to, mode, diffReviewId } = (await searchParams) ?? {};
   const c = await cookies();
   const rawRole = (c.get("qc_role")?.value ?? "").toLowerCase();
   void rawRole; // role enforcement will be done by backend in v1+
@@ -24,6 +25,7 @@ export default async function ApprovePanelPage({
       from={from}
       to={to}
       mode={mode}
+      diffReviewId={diffReviewId}
     />
   );
 }

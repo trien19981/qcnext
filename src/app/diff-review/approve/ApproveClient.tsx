@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { submitDiffReview } from "@/features/diff-viewer/api";
 
 type ChangeKind = "add" | "delete" | "edit";
 
@@ -109,12 +110,14 @@ export function ApproveClient({
   from,
   to,
   mode,
+  diffReviewId,
 }: {
   projectId?: string;
   docId?: string;
   from?: string;
   to?: string;
   mode?: string;
+  diffReviewId?: string;
 }) {
   const router = useRouter();
 
@@ -141,12 +144,17 @@ export function ApproveClient({
   async function onConfirm() {
     if (submitting) return;
     setSubmitting(true);
-    // mock re-embedding
-    await new Promise((r) => setTimeout(r, 1100));
-    setToastOpen(true);
-    setTimeout(() => {
-      router.replace(backToS5);
-    }, 900);
+    try {
+      if (diffReviewId) {
+        await submitDiffReview(diffReviewId, { review_note: note.trim() || undefined });
+      }
+      setToastOpen(true);
+      setTimeout(() => {
+        router.replace(backToS5);
+      }, 900);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (

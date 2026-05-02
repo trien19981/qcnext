@@ -36,6 +36,8 @@ export const endpoints = {
       `/api/v1/documents/${documentId}/versions/${versionId}/download`,
     patch: (documentId: string) => `/api/v1/documents/${documentId}`,
     delete: (documentId: string) => `/api/v1/documents/${documentId}`,
+    diff: (documentId: string) => `/api/v1/documents/${documentId}/diff`,
+    diffHistory: (documentId: string) => `/api/v1/documents/${documentId}/diff-history`,
   },
 
   chunks: {
@@ -53,5 +55,13 @@ export const endpoints = {
     deleteConversation: (conversationId: string) => `/api/v1/chat/conversations/${conversationId}`,
     suggestedQuestions: (conversationId: string) =>
       `/api/v1/chat/conversations/${conversationId}/suggested-questions`,
+  },
+
+  diffViewer: {
+    diffReview: (diffReviewId: string) => `/api/v1/diff-reviews/${diffReviewId}`,
+    diffReviewStatus: (diffReviewId: string) => `/api/v1/diff-reviews/${diffReviewId}/status`,
+    diffSubmit: (diffReviewId: string) => `/api/v1/diff-reviews/${diffReviewId}/submit`,
+    diffApproveAll: (diffReviewId: string) => `/api/v1/diff-reviews/${diffReviewId}/approve-all`,
+    diffChange: (changeId: string) => `/api/v1/diff-changes/${changeId}`,
   },
 } as const;
