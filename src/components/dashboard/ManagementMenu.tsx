@@ -51,6 +51,14 @@ const menu: MenuItem[] = [
     highlights: ["Tạo/edit testcase", "Link chunk ↔ testcase", "Generate từ selection"],
   },
   {
+    title: "AI Prompts (theo project)",
+    description:
+      "Chỉnh prompt Q&A, câu hỏi gợi ý và generate testcase; mở kèm ?projectId=UUID sau khi chọn project.",
+    href: "/ai-prompts",
+    roles: ["Admin", "PM/BA"],
+    highlights: ["System prompt Q&A", "Suggested questions", "TC generate"],
+  },
+  {
     title: "Project & Members",
     description: "Tạo project, quản lý member và phân quyền theo vai trò.",
     href: "/projects",

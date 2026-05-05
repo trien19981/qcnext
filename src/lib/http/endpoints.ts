@@ -59,6 +59,13 @@ export const endpoints = {
   },
   testcaseDelete: (testcaseId: string) => `/api/v1/testcases/${testcaseId}`,
 
+  /** Per-project AI prompt overrides (qcbe ai_prompts) */
+  aiPrompts: {
+    list: (projectId: string) => `/api/v1/projects/${projectId}/ai-prompts`,
+    item: (projectId: string, promptKey: string) =>
+      `/api/v1/projects/${projectId}/ai-prompts/${encodeURIComponent(promptKey)}`,
+  },
+
   chat: {
     listConversations: (projectId: string) => `/api/v1/projects/${projectId}/chat/conversations`,
     createConversation: (projectId: string) => `/api/v1/projects/${projectId}/chat/conversations`,

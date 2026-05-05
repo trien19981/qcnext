@@ -295,10 +295,16 @@ export function DocumentsClientApi({ projectId }: { projectId?: string }) {
                   Chatbot
                 </Link>
                 <Link
-                  href="/testcases"
+                  href={projectId ? `/testcases?projectId=${encodeURIComponent(projectId)}` : "/testcases"}
                   className="block rounded-lg px-3 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/30"
                 >
                   Testcases
+                </Link>
+                <Link
+                  href={projectId ? `/ai-prompts?projectId=${encodeURIComponent(projectId)}` : "/ai-prompts"}
+                  className="block rounded-lg px-3 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/30"
+                >
+                  Prompt AI
                 </Link>
               </nav>
             </div>
